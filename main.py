@@ -1,21 +1,22 @@
-import os
-from dotenv import load_dotenv
-from ui.app import HotelApp
-import customtkinter as ctk
+import streamlit as st
+from database.db_manager import DatabaseManager
 
-def main():
-    load_dotenv()
-    
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        print("Warning: GEMINI_API_KEY not found in environment variables.")
-        api_key = "dummy_key_to_prevent_crash"
-        
-    ctk.set_appearance_mode("dark")
-    ctk.set_default_color_theme("blue")
-    
-    app = HotelApp(api_key)
-    app.mainloop()
+st.set_page_config(
+    page_title="Grand Vista Hotel",
+    page_icon="🏨",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
-if __name__ == "__main__":
-    main()
+db = DatabaseManager()
+
+st.title("🏨 Grand Vista Hotel")
+st.markdown("### Management Dashboard")
+
+stats = db.get_dashboard_stats()
+
+col1, col2, col3, col4 = st.columns(4)
+col1.metric("🛏️ Total Rooms", stats["total_rooms"])
+col2.metric("✅ Available Rooms", stats["available_rooms"])
+col3.metric("📅 Active Bookings", stats["active_bookings"])
+col4.metric("💰 Total Revenue", f"${stats['today_revenue']:,.2f}")
