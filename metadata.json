@@ -1,0 +1,6 @@
+{
+  "name": "Grand Vista Hotel Booking System",
+  "description": "A comprehensive hotel management application with rooms, guests, bookings, invoices, and an AI receptionist chatbot powered by Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
