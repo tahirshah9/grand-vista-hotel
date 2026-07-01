@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "sh -c 'python3 -m streamlit run main.py'",
+    "dev": "bash start.sh",
     "build": "curl -sS https://bootstrap.pypa.io/get-pip.py | python3 - --break-system-packages && python3 -m pip install --break-system-packages -r requirements.txt",
     "start": "sh -c 'python3 -m streamlit run main.py'",
     "preview": "vite preview",
@@ -25,7 +25,8 @@
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "tailwind-merge": "^3.6.0",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "ws": "^8.21.0"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
