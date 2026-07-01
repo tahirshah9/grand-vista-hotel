@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "bash start.sh",
     "build": "curl -sS https://bootstrap.pypa.io/get-pip.py | python3 - --break-system-packages && python3 -m pip install --break-system-packages -r requirements.txt",
-    "start": "sh -c 'python3 -m streamlit run main.py --server.port 3000 --server.address 0.0.0.0 --server.headless true --server.enableCORS false --server.enableXsrfProtection false'",
+    "start": "sh -c 'python3 -m streamlit run main.py --server.port 3000 --server.address 0.0.0.0 --server.headless true --server.enableCORS false --server.enableXsrfProtection false --server.enableWebsocketCompression false'",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"
