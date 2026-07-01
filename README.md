@@ -1,6 +1,6 @@
 # Grand Vista Hotel Booking System
 
-A Python-based desktop application for hotel management, built using strict OOP principles, `customtkinter` for the UI, `sqlite3` for local persistence, and the `google-generativeai` SDK for an integrated AI receptionist.
+A Python-based web application for hotel management, built using `streamlit` for the UI, `sqlite3` for local persistence, and the `google-generativeai` SDK for an integrated AI receptionist.
 
 ## Features
 - **Dashboard**: High-level overview of hotel stats.
@@ -30,7 +30,5 @@ A Python-based desktop application for hotel management, built using strict OOP 
 
 3. **Run the App**:
    ```bash
-   python main.py
+   streamlit run main.py
    ```
-
-**Note**: This is a desktop application utilizing tkinter. It requires a local display environment (X11/Wayland on Linux, or Windows/macOS window manager). It will not run properly in headless web container environments.
