@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "dev": "sh -c 'python3 -m streamlit run main.py'",
     "build": "curl -sS https://bootstrap.pypa.io/get-pip.py | python3 - --break-system-packages && python3 -m pip install --break-system-packages -r requirements.txt",
-    "start": "python3 -m streamlit run main.py",
-    "dev": "python3 -m streamlit run main.py",
+    "start": "sh -c 'python3 -m streamlit run main.py'",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"
