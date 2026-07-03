@@ -24,19 +24,24 @@ with st.form("booking_form"):
     submitted = st.form_submit_button("Book Now")
 
     if submitted:
-        try:
-            db.save_reservation(
-                guest_options[selected_guest],
-                room_options[selected_room],
-                str(check_in),
-                str(check_out)
-            )
-            st.success("Booking confirmed!")
-            st.rerun()
-        except RoomNotAvailableError:
-            st.error("Room is not available!")
-        except InvalidDateError:
-            st.error("Check-out must be after check-in!")
+        if not selected_guest:
+            st.error("Please add a guest first from the Guests page.")
+        elif not selected_room:
+            st.error("No rooms are available to book.")
+        else:
+            try:
+                db.save_reservation(
+                    guest_options[selected_guest],
+                    room_options[selected_room],
+                    str(check_in),
+                    str(check_out)
+                )
+                st.success("Booking confirmed!")
+                st.rerun()
+            except RoomNotAvailableError:
+                st.error("Room is not available!")
+            except InvalidDateError:
+                st.error("Check-out must be after check-in!")
 
 # Bookings Table
 st.subheader("All Bookings")
