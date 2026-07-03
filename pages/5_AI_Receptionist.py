@@ -13,11 +13,14 @@ st.caption("Ask Aria anything about rooms, bookings, or hotel policies.")
 api_key = st.secrets.get("GEMINI_API_KEY", os.getenv("GEMINI_API_KEY", ""))
 
 if not api_key:
-    st.warning("Please configure your GEMINI_API_KEY in the app settings/secrets to chat with Aria.")
-    st.stop()
+    st.warning("GEMINI_API_KEY is not configured in secrets.")
+    api_key = st.text_input("Please enter your Gemini API Key:", type="password")
+    if not api_key:
+        st.stop()
 
-if "aria" not in st.session_state:
+if "aria" not in st.session_state or st.session_state.get("api_key") != api_key:
     st.session_state.aria = GeminiReceptionist(api_key)
+    st.session_state.api_key = api_key
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [{"role": "assistant", "content": "Hello! I am Aria, your receptionist at Grand Vista Hotel. How can I help you today?"}]
 
